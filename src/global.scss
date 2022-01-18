@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+:root {
+  --color-white: #FFFFFF;
+
+  --color-black: #000000;
+  --color-black50: #333333;
+
+  --color-orange: #ffa500;
+
+  --color-gray50: #888888;
+}
+
+html {
+  font: 300 62.5% Poppins;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,13 @@
+.titleContainer {
+  margin-top: 15rem;
+
+  .title {
+    font-size: 10rem;
+    text-transform: uppercase;
+    color: var(--color-black50);
+
+    span {
+      color: var(--color-orange);
+    }
+  }
+}
