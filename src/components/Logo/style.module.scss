@@ -1,5 +1,6 @@
 .titleContainer {
   margin-top: 15rem;
+  position: relative;
 
   .title {
     font-size: 10rem;
@@ -9,5 +10,13 @@
     span {
       color: var(--color-orange);
     }
+  }
+
+  img {
+    width: 150px;
+    position: absolute;
+    top: -20px;
+    right: -150px;
+    transform: rotateY(180deg);
   }
 }

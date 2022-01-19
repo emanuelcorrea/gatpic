@@ -13,11 +13,14 @@ interface ImageProps {
   description: string,
   created_at: string,
   likes: number,
-  urls: Urls
+  urls: Urls,
+  tags: Array<{title: string}>
 }
 
 interface ListImages {
-  images: ImageProps[]
+  images: ImageProps[],
+  total: number,
+  title: string
 }
 
 const ImageList:React.FC<ListImages> = props => {
@@ -25,11 +28,20 @@ const ImageList:React.FC<ListImages> = props => {
     return <ImageCard key={images.id} data={images} />
   })
   
-  return (
-    <div className={styles.imagesContainer}>
-      {images}
-    </div>
-  );
+  if (props.total > 0 ) {
+    return (
+      <>
+        <h2 className={styles.info}>
+          There are <span>{props.total == 10000 ? '10000+' : props.total}</span> pics about <span>{props.title}</span>
+        </h2>
+        <div className={styles.imagesContainer}>
+          {images}
+        </div>
+      </>
+    );
+  }
+
+  return <></>
 }
 
 export default ImageList

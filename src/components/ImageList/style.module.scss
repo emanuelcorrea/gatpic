@@ -1,6 +1,14 @@
+.info {
+  margin: 10rem 0 2.5rem;
+
+  span {
+    color: var(--color-orange);
+  }
+}
+
 .imagesContainer {
-  margin-top: 5rem;
-  
   columns: 5;
+  gap: 1rem;
   width: 170rem;
+  margin-bottom: 5rem;
 }

@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './style.module.scss'
 
+import catIcon from '../../assets/images/cat-icon.jpg'
+
 class Logo extends React.Component {
   render() {
     return (
@@ -9,6 +11,7 @@ class Logo extends React.Component {
         <h1 className={styles.title}>
           Gat<span>Pic</span>
         </h1>
+        <img src={catIcon} alt="Cat icon" />
       </div>
     );
   }

@@ -7,7 +7,8 @@ import ImageList from './ImageList';
 import Unsplash from '../api/Unsplash'
 
 interface Results {
-  results: Array<Object>
+  results: Array<Object>,
+  total: number
 }
 
 interface Data {
@@ -15,17 +16,21 @@ interface Data {
 }
 
 class App extends React.Component {
-  state = { images: [] }
+  state = {
+    text: '',
+    images: [],
+    total: 0
+  }
   
   onInputSearch: Function = async (text: string) => {
     const response: Data = await Unsplash.get('/search/photos', {
       params: {
-        query: text,
+        query: `cat ${text}`,
         per_page: 15
       }
     });
     
-    this.setState({ images: response.data.results })
+    this.setState({ text: text, images: response.data.results, total: response.data.total })
   }
   
   render() {
@@ -33,7 +38,7 @@ class App extends React.Component {
       <main>
         <Logo />
         <SearchBar onInputSearch={this.onInputSearch} />
-        <ImageList images={this.state.images} />
+        <ImageList title={this.state.text} images={this.state.images} total={this.state.total} />
       </main>
     );
   }

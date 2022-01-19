@@ -24,7 +24,7 @@ class SearchBar extends React.Component<SearchProps> {
             value={this.state.text}
             onChange={e => this.setState({ text: e.target.value })}
             type="text"
-            placeholder="Search your cat here!"
+            placeholder="White..."
             autoFocus
           />
           <button
