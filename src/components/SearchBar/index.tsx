@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 
-import React, { ReactEventHandler } from 'react';
+import React from 'react';
 
 interface SearchProps {
   onInputSearch: Function

@@ -32,7 +32,7 @@ const ImageList:React.FC<ListImages> = props => {
     return (
       <>
         <h2 className={styles.info}>
-          There are <span>{props.total == 10000 ? '10000+' : props.total}</span> pics about <span>{props.title}</span>
+          There are <span>{props.total === 10000 ? '10000+' : props.total}</span> pics about <span>{props.title}</span>
         </h2>
         <div className={styles.imagesContainer}>
           {images}
