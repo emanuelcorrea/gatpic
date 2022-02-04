@@ -1,47 +1,47 @@
-import React from 'react';
-
 import styles from './style.module.scss';
 
 import ImageCard from '../ImageCard';
+import { useSelector } from 'react-redux';
 
-interface Urls {
-  regular: string
+type ImageState = {
+  images: object
 }
 
-interface ImageProps {
-  id: string,
-  description: string,
-  created_at: string,
-  likes: number,
-  urls: Urls,
-  tags: Array<{title: string}>
+type ImageResults = {
+  title: string,
+  results: object[],
+  totals: number
 }
 
-interface ListImages {
-  images: ImageProps[],
-  total: number,
-  title: string
-}
+// type Image = {
+//   id: string,
+//   description: string,
+//   created_at: string,
+//   likes: number,
+//   urls: {
+//     regular: string
+//   }
+// }
 
-const ImageList:React.FC<ListImages> = props => {
-  const images = props.images.map((images: ImageProps) => {
-    return <ImageCard key={images.id} data={images} />
-  })
-  
-  if (props.total > 0 ) {
+const ImageList = () => {
+  const images: ImageResults = useSelector((state: ImageState) => state.images as ImageResults);
+
+  if (images.totals) {
+    const imageList = images.results.map((image: any, index) => {
+      return <ImageCard key={index} data={image} />
+    });
+    
     return (
       <>
         <h2 className={styles.info}>
-          There are <span>{props.total === 10000 ? '10000+' : props.total}</span> pics about <span>{props.title}</span>
+          There are <span>{`${images.totals}+`}</span> pics about <span>{images.title}</span>
         </h2>
-        <div className={styles.imagesContainer}>
-          {images}
-        </div>
+        <div className={styles.imagesContainer}>{imageList}</div>
       </>
     );
   }
 
-  return <></>
+  return null;
 }
 
 export default ImageList

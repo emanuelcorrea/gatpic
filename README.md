@@ -38,7 +38,7 @@ yarn start
 
 4. Open the browser and go to http://localhost:3000
 
-5. Seach an image and be happy! 😊
+5. Search for any cat type like 'white' and be happy! 😊
 
 
 ### License
