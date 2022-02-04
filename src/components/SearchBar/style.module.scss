@@ -35,5 +35,10 @@
     transition: 0.2s ease-out all;
     font-size: 1.6rem;
     color: var(--color-gray50);
+
+    &:hover {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+    }
   }
 }
