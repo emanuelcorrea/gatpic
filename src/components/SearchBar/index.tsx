@@ -5,7 +5,7 @@ import Unsplash from '../../api/Unsplash';
 
 import styles from './style.module.scss';
 
-import * as ImagesAction from '../../store/actions/images';
+import { clearImages, loadImages } from '../../features/images/imagesSlice';
 
 const SearchBar = () => {
   const [text, setText] = useState('White');
@@ -36,12 +36,12 @@ const SearchBar = () => {
   
     const response = await searchImages();
 
-    dispatch(ImagesAction.loadImages(text, response.data));
+    dispatch(loadImages(response.data));
 
     setTimeout(() => {
       setLoading(false);
     }, 1000)
-  }, [searchImages, text, dispatch]);
+  }, [searchImages, dispatch]);
   
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -50,26 +50,25 @@ const SearchBar = () => {
     setScroll(100);
     setScreen(2000);
 
-    dispatch(ImagesAction.clearImages());
+    dispatch(clearImages());
 
     console.log(page);
     
     const response = await searchImages();
     
-    dispatch(ImagesAction.loadImages(text, response.data));
+    dispatch(loadImages(response.data));
   }
 
   useEffect(() => {
     async function searchInit() {
       const response = await searchImages();
 
-      dispatch(ImagesAction.loadImages(text, response.data));
+      dispatch(loadImages(response.data));
 
       setPage(currPage => currPage + 1);
     }
     
     searchInit();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

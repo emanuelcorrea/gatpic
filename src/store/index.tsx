@@ -1,7 +1,12 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit'
+import imagesReducer from '../features/images/imagesSlice'
 
-import reducers from './reducers';
+export const store = configureStore({
+  reducer: {
+    images: imagesReducer
+  }
+})
 
-const store = createStore(reducers);
+export type RootState = ReturnType<typeof store.getState>
 
-export default store;
+export type AppDispatch = typeof store;

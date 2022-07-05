@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { LazyComponentProps, LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -18,20 +18,18 @@ type ImageProps = {
   }
 }
 
-const ImageCard:React.FC<LazyComponentProps & {data: ImageProps }> = ({ data: { height, width, description, urls, likes } }) => {
+const ImageCard:React.FC<{ data: ImageProps }> = ({ data: { description, urls, likes } }): JSX.Element => {
   const [rendered, setRendered] = useState(false);
   
   return (
     <div className={styles.imageContainer}>
       <div className={styles.imageCard}>
-        {/* {<Skeleton height={30} />} */}
         <LazyLoadImage
           src={urls.regular}
           effect="blur"
           alt={description}
           afterLoad={() => setRendered(true)}
         />
-        {/* <img src={urls.regular} alt={description} /> */}
       </div>
       {rendered !== false ?
         <div className={styles.imageDescription}>
@@ -47,8 +45,7 @@ const ImageCard:React.FC<LazyComponentProps & {data: ImageProps }> = ({ data: { 
 //   return (
 //     <div className={styles.imageContainer}>
 //       <div className={styles.imageCard}>
-//         {<Skeleton height={30} />}
-//         {/* {<img src={urls.regular} alt={description} /> || <Skeleton height={30} />} */}
+//         {<img src={urls.regular} alt={description} />}
         
 //       </div>
 //       <div className={styles.imageDescription}>
@@ -60,4 +57,4 @@ const ImageCard:React.FC<LazyComponentProps & {data: ImageProps }> = ({ data: { 
 //   );
 // }
 
-export default trackWindowScroll(ImageCard);
+export default ImageCard;

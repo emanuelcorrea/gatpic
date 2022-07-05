@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:react/recommended",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["react", "prettier", "react-hooks", "import-helpers"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": { "extensions": [".ts", ".tsx", ".d.ts", ".js"] }
+    }
+  },
+  "ignorePatterns": ["**/*.test.js", "**/*.test.jsx", "**/*.stories.tsx", "**/setupTests.js"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "mockUseStyles": true,
+    "mockFormatMessage": true,
+    "done": true,
+    "fail": true
+  }
+}
