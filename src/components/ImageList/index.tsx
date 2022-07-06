@@ -1,11 +1,20 @@
 import styles from './style.module.scss';
 
-import ImageCard from '../ImageCard';
+import ImageCard, { ImageProps } from '../ImageCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import Modal from '../Modal';
+import { memo, useState } from 'react';
 
 const ImageList = () => {
   const images = useSelector((state: RootState) => state.images);
+  const [selectedImage, setSelectedImage] = useState('');
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleClickImage = (imageUrl: string) => {
+    setModalOpen(currOpen => !currOpen)
+    setSelectedImage(imageUrl)
+  }
 
   if (images.total) {
     return (
@@ -14,10 +23,11 @@ const ImageList = () => {
           There are <span>{`${images.total}+`}</span> pics about <span>{images.title}</span>
         </h2>
         <div className={styles.imagesContainer}>
-          {images.results.map((image: any, index) => {
-            return <div><ImageCard key={index} data={image} /></div>
+          {images.results.map((image, index) => {
+            return <div><ImageCard onClick={() => handleClickImage(image.urls.regular)} key={index} data={image} /></div>
           })}
         </div>
+        <Modal imageUrl={selectedImage} isOpen={isModalOpen} handleOpen={setModalOpen} />
       </>
     );
   }
@@ -25,4 +35,4 @@ const ImageList = () => {
   return null;
 }
 
-export default ImageList
+export default memo(ImageList)

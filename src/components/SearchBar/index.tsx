@@ -98,11 +98,14 @@ const SearchBar = () => {
           placeholder="White..."
           autoFocus
         />
-        <button
-          className={styles.searchButton}
-          type="submit">
-          <i className="fas fa-search" />
-        </button>
+        <div className={styles.searchBox}>
+          <button
+            className={styles.searchButton}
+            type="submit">
+            <i className="fas fa-search" />
+          </button>
+        </div>
+        <div className={styles.searchOutline}></div>
       </form>
     </div>
   );

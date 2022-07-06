@@ -1,6 +1,8 @@
 .imageContainer {
   break-inside: avoid;
   margin-bottom: 3rem;
+  animation: 0.3s fadeIn;
+  will-change: transform;
 }
 
 .imageCard {
@@ -42,5 +44,15 @@
 
   i {
     color: var(--color-orange);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }

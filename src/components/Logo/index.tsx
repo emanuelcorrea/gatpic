@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './style.module.scss'
 
-import catIcon from '../../assets/images/cat-icon.jpg'
+import catIcon from '../../assets/images/cat-icon.png'
 
 class Logo extends React.Component {
   render() {

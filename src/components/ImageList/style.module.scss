@@ -1,5 +1,8 @@
 .info {
   margin: 10rem 0 2.5rem;
+  transition: 1s ease-in-out;
+  animation: 1s fadeIn;
+  will-change: opacity transform;
 
   span {
     color: var(--color-orange);
@@ -9,6 +12,35 @@
 .imagesContainer {
   columns: 5;
   gap: 1rem;
-  width: 170rem;
+  width: 100%;
+  max-width: 170rem;
   margin-bottom: 5rem;
+  transition: transform ease-in-out, opacity ease-in;
+  animation: 1s upDown;
+  will-change: transform;
+}
+
+@keyframes upDown {
+  0% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

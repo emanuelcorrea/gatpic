@@ -1,6 +1,8 @@
 .titleContainer {
   margin-top: 15rem;
   position: relative;
+  transition: 1s transfo ease-in-out;
+  animation: 1s fadeIn;
 
   .title {
     font-size: 10rem;
@@ -15,8 +17,30 @@
   img {
     width: 150px;
     position: absolute;
-    top: -20px;
-    right: -150px;
-    transform: rotateY(180deg);
+    top: 0;
+    right: 0;
+    transform: translateY(-20px) translateX(150px) rotateY(180deg) scale(0);
+    transition: 1s transform ease-in-out;
+    animation: 1s logoFadeIn forwards normal;
+    animation-delay: 1s;
+    will-change: transform;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+  } 100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes logoFadeIn {
+  0% {
+    transform: translateY(-50px) translateX(150px) rotateY(180deg) scale(0);
+  } 60% {
+    transform: translateY(-20px) translateX(150px) rotateY(180deg) scale(1.05);
+  } 100% {
+    transform: translateY(-20px) translateX(150px) rotateY(180deg) scale(1);
   }
 }

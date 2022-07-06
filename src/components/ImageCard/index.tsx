@@ -6,7 +6,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import styles from './style.module.scss'
 
-type ImageProps = {
+export type ImageProps = {
   id: string,
   description: string,
   created_at: string,
@@ -15,14 +15,21 @@ type ImageProps = {
   width: number,
   urls: {
     regular: string
-  }
+  },
 }
 
-const ImageCard:React.FC<{ data: ImageProps }> = ({ data: { description, urls, likes } }): JSX.Element => {
+type ImageCardProps = {
+  data: ImageProps,
+  onClick: React.SetStateAction<any>
+}
+
+const ImageCard:React.FC<ImageCardProps > = ({ data: { description, urls, likes }, onClick }): JSX.Element => {
   const [rendered, setRendered] = useState(false);
+
+  console.log('rendered :>> ', rendered);
   
   return (
-    <div className={styles.imageContainer}>
+    <div className={styles.imageContainer} onClick={onClick}>
       <div className={styles.imageCard}>
         <LazyLoadImage
           src={urls.regular}

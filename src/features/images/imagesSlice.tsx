@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { ImageProps } from "../../components/ImageCard";
 
 export interface ImageState {
   title: string,
-  results: object[],
+  results: ImageProps[],
   total: number
 }
 
